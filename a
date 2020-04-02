@@ -1,0 +1,8 @@
+#!/usr/bin/python3
+
+Obst ={'Apfel','Birne','Banane','Kiwi'}
+print (Obst)
+
+
+
+
