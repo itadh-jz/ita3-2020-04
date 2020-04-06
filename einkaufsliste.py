@@ -56,6 +56,25 @@ produkt9 = {'Name': 'Salat',
 
 einkaufsliste = [ produkt0, produkt1, produkt2, produkt3, produkt4, produkt5, produkt6, produkt7, produkt8, produkt9 ]
 
+################################################
+einkaufsliste = []
+firstline = True
+with open('/home/tn/bin/einkaufliste.csv', 'r') as fh:
+#    content = fh.read()
+    for line in fh.readlines():
+        if firstline is True:
+            firstline = False
+            continue
+        items = line.split(',')
+        name = items[0][1:]
+        name = name[:-1]
+        preis = int(items[1])
+        gewicht = int(items[2])
+        anzahl = items[3]
+        anzahl = int(anzahl[:-1])
+        nahrungsmittel = {'Name': name, 'Preis': preis, 'Gewicht': gewicht, 'Anzahl': anzahl}
+        einkaufsliste.append(nahrungsmittel)
+################################################
 
 geld = input('Wieviel Geld wollen Sie heute ausgeben: ')
 geld = int(geld)
