@@ -1,0 +1,16 @@
+== Schleifen
+
+In Python git es zwei verschiedene Schleifen. 
+
+=== die _for_ Schleife
+
+In einer _for_ Schleife wird eine Liste solange durchlaufen wie die Liste lang ist.
+
+[source,python]
+.eine for Schleife
+----
+einkaufliste = [ 'Brot', 'Eier', 'Äpfel', 'Milch', 'Butter', 'Nudeln' ]
+for nahrungsmittel in einkauflist:
+    print(nahrungsmittel)
+----
+

@@ -1,0 +1,12 @@
+== Variablen
+
+In Python werden Variablen verwendet um Werte zu speichern. Eine Variable kann jederzeit mit einem neuen Wert überschrieben werden.
+
+[source,python]
+.Variablen
+----
+var1 = 'ein Text'
+var1 = 'ein anderer Text'
+----
+
+
