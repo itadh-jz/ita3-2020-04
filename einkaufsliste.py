@@ -1,8 +1,9 @@
 #!/usr/bin/python3
 
+types = { 'name': 'string', 'preis': 'int', 'gewicht': 'int', 'menge': 'int' }
 
 def datei_einlesen(Datei):
-    einkaufsliste = []
+    _einkaufsliste = []
     firstline = True
     # einlesen der Daten aus einer CSV Datei
     with open(Datei, 'r') as fh:
@@ -18,9 +19,11 @@ def datei_einlesen(Datei):
             anzahl = items[3]
             anzahl = int(anzahl[:-1])
             nahrungsmittel = {'Name': name, 'Preis': preis, 'Gewicht': gewicht, 'Anzahl': anzahl}
-            einkaufsliste.append(nahrungsmittel)
+            _einkaufsliste.append(nahrungsmittel)
+    return _einkaufsliste
 
-datei_einlesen('/home/tn/bin/einkaufliste.csv')
+#einkaufsliste = datei_einlesen('/home/tn/bin/einkaufliste.csv')
+einkaufsliste = datei_einlesen('/home/tn/bin/ekliste.csv')
 
 
 geld = input('Wieviel Geld wollen Sie heute ausgeben: ')

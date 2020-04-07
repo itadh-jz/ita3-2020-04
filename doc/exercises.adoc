@@ -1,0 +1,26 @@
+= Python3 Aufgaben
+
+:encoding: utf-8
+:lang: de
+:keywords: Programmieren, Python, Vorkurs
+:revision: 1.0.0
+:revnumber: 1.0.0
+:revdate: 07.04.2020
+:revremark: inital
+:copyright: Jörg Zimmermann
+:author: jz
+:email: jz@mgeg.de
+:toc:
+:toc-title: Inhaltsverzeichnis
+
+Copyright: {copyright} +
+Author: {author} +
+eMail: {email} +
+Version: {revision} +
+// vim set: syntax=asciidoc
+
+toc::[]
+
+
+include::exercise_recognice_ipv4.adoc[]
+
