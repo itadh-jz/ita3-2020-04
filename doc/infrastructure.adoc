@@ -1,0 +1,3 @@
+ f685bbc7df6ae1453bf3f6f86192745c8d26dbdf
+
+https://github.com/itadh-jz/ita3-2020-04/blob/master/einkaufliste.py

@@ -1,11 +1,11 @@
-= Python3
+= Python3 Aufgaben
   
 :encoding: utf-8
 :lang: de
 :keywords: Programmieren, Python, Vorkurs
 :revision: 1.0.0
 :revnumber: 1.0.0
-:revdate: 02.04.2020
+:revdate: 07.04.2020
 :revremark: inital
 :copyright: Jörg Zimmermann
 :author: jz

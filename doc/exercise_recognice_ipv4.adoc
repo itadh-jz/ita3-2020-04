@@ -2,6 +2,7 @@
 
 == Aufgabe 1: Erkennen von IPv4 Adressen
 
+
 Sie erhalten eine CSV Datei in der IPv4 Adressen eingetragen sind. +
 Lesen Sie die Datei mit Python3 ein. Das Program soll nun für jede Zeile die unten aufgeführten Fragen beantworten. +
 
@@ -20,26 +21,45 @@ In der CSV sind mehrere Spalten enthalten. In der ersten Zeile steht eine Beschr
 [source.bash]
 .+network_stuff.csv+
 ----
-address;private;network;broadcast;netmask;hosts;ipv6
-138.201.41.13;;;;;
-192.168.12.22;;;;;
-some garbage;;;;;
-172.32.9.31;;;;;
-8.8.8.8;;;;;
-192.168.23.0/24;;;;;
-13.13.13.15/28;;;;;
-10.0.12.23/12;;;;;
-192.168.0.8/29;;;;;
-7.7.7.7.7;;;;;
-192.168.23.63/30;;;;;
-255.255.255.240;;;;;
-0.0.0.0;;;;;
-fe80::f486:739b:e9e5:23f6/64;;;;;
-127.0.1.53;;;;;
-225.255.255.240/28;;;;;
-192.168.178.21/24;;;;;
-192.168.123.255;;;;;
+address;private;network;broadcast;netmask;hosts;ipv6;bin
+138.201.41.13;;;;;;;
+192.168.12.22;;;;;;;
+some garbage;;;;;;;
+172.32.9.31;;;;;;;
+8.8.8.8;;;;;;;
+192.168.23.0/24;;;;;;;
+13.13.13.15/28;;;;;;;
+10.0.12.23/12;;;;;;;
+192.168.0.8/29;;;;;;;
+7.7.7.7.7;;;;;;;
+192.168.23.63/30;;;;;;;
+255.255.255.240;;;;;;;
+0.0.0.0;;;;;;;
+fe80::f486:739b:e9e5:23f6/64;;;;;;;
+127.0.1.53;;;;;;;
+225.255.255.240/28;;;;;;;
+192.168.178.21/24;;;;;;;
+192.168.123.255;;;;;;;
 ----
+
+=== Schlüsselwörter
+
+* *Kommentare*
+* *einfache Variablen*
+* *Listen*
+* *Dictionaries*
+* *print*
+* *formatierte Strings* (print(f'{chars}{zeichenkette}{chars}'))
+* *if, elif, else*
+* *for* oder *while*
+* *string.split()*
+* *open with*
+* *Vergleiche* (< > == >=)
+* *Funktionen* (def)
+* *Substrings* (string[2:5])
+* *input('Wieviel Geld wollen Sie heute ausgeben: ')*
+* *list.append(result)*
+
 
 == Aufgabe 1.1: Schreiben einer Funktion
 
@@ -54,3 +74,9 @@ Das obige Programm erkennt zuverlässig IPv4 Adressen. Diese Funktionalität ist
 * IPv6 Adresse
 * etwas Müll
 
+== Lösung 1:
+
+[source,python,highlight=4]
+-----
+print('solution')
+-----

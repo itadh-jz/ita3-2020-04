@@ -12,6 +12,8 @@
 :email: jz@mgeg.de
 :toc:
 :toc-title: Inhaltsverzeichnis
+:icons: font
+:source-highlighter: pygments
 
 Copyright: {copyright} +
 Author: {author} +
@@ -21,6 +23,22 @@ Version: {revision} +
 
 toc::[]
 
+== Vorbemerkungen
+
+Die folgenden Aufgaben orientieren sich an Fragestellungen wie sie in der Praxis so, oder so ähnlich vorkommen. +
+Bei einigen Aufgaben werden mehrere Fragen gestellt die nach Schwierigkeitsgrad gestaffelt sind. Ziel soll nicht sein alle Fragen richtig zu beantworten. Die schwierigeren Fragen werden für diejenigen Teilnehmer gestellt, denen die Beantwortung der ersten Fragen leichter fallen. +
+Für die Lösung der Fragen sind viele Lösungswege denkbar. Einige sind eleganter als andere. Entscheidend ist es aber überhaupt ein Lösung zu finden. Bitte beschränken Sie sich bei der Programmierung der Lösungen auf die bisher behandelten Schlüsselwörter/Konstrukte. Diese sind im unteren Teil einer Aufgabe aufgeführt. +
+Bitte verwenden Sie für die Lösung der Aufgaben nicht Google oder andere Suchmaschinen sondern versuchen Sie selber eine Lösung zu erarbeiten. +
+Wenn es Probleme gibt die Sie nicht lösen können, untersuchen Sie Ihr Script auf folgende Punkte:
+
+* sind die Einrückungen korrekt (verwenden Sie ausschliesslich vier Leerzeichen zum Einrücken)
+* lesen Sie die Fehlermeldung des Interpreters *genau*, die Fehlermeldungen zeigen Ihnen in der Regel die fehlerhafte Zeile sowie die Art des Problems an.
+* folgen Sie dem Vier Augen Prinzip; Lassen Sie Ihren Nachbarn über Ihren Code drüber schauen. Häufig erkennt ein Aussenstehender Fehler schneller weil er nicht _betriebsbind_ ist.
+* Jeden Fehler den Sie selber finden verschafft Ihnen ein Erfolgserlebnis, trotzdem sollten Sie nich zögern um nach Unterstützung zu fragen.
+* starten Sie Python3 interacktiv und probieren Sie einzelne Konstrukte in der Python3 Konsole aus
+
+
+NOTE: Wer Rechtschreibfehler findet darf sie behalten
 
 include::exercise_recognice_ipv4.adoc[]
 
