@@ -41,4 +41,5 @@ Wenn es Probleme gibt die Sie nicht lösen können, untersuchen Sie Ihr Script a
 NOTE: Wer Rechtschreibfehler findet darf sie behalten
 
 include::exercise_recognice_ipv4.adoc[]
+include::exercise_try_except.adoc[]
 

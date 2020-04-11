@@ -10,15 +10,36 @@ with open(file, 'r') as fh:
             first_line = False
             continue
         rows = line.split(';')
+#        print(rows)
         pattern = rows[0]
-        octett = pattern.split('.')
+        octetts = pattern.split('.')
+#        print(octett)
 
-        len = 0
-        for i in octett:
-            len = len + 1
+        l = 0
+        for i in octetts:
+            l = l + 1
+ 
+        if l == 4:
+            print(f'Treffer ok: {octetts}')
+            for octett in octetts:
+#                print(octett)
+                for zeichen in octett:
+                    print(zeichen)
+#                    if zeichen == 0:
+#                        print('ok')                    
+#                    elif zeichen == 1:
+#                        print('ok')
+#                    else:
+#                        continue
+#  225.255.255.241/28
+#  255.255.255.240
 
-        if len == 4:
-            print(f'Treffer ok: {octett}')
-        else:
-            print(pattern)
-            print('WEG DAMIT')
+
+
+#            octett_ok = int(octett) 
+
+
+#        else:
+#            print(pattern)
+#            print('WEG DAMIT')
+
