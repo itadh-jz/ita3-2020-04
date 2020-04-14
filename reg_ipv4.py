@@ -10,36 +10,39 @@ with open(file, 'r') as fh:
             first_line = False
             continue
         rows = line.split(';')
-#        print(rows)
         pattern = rows[0]
         octetts = pattern.split('.')
-#        print(octett)
 
         l = 0
         for i in octetts:
             l = l + 1
  
-        if l == 4:
-            print(f'Treffer ok: {octetts}')
-            for octett in octetts:
-#                print(octett)
-                for zeichen in octett:
-                    print(zeichen)
-#                    if zeichen == 0:
-#                        print('ok')                    
-#                    elif zeichen == 1:
-#                        print('ok')
-#                    else:
-#                        continue
-#  225.255.255.241/28
-#  255.255.255.240
+        if l != 4:
+            continue
 
+##################################
+        items = octetts[3].split('/')
+        l = 0
+        for i in items:
+            l = l + 1
 
+        # 
+        if l == 1:
+            # keine Netmask
+            print('no netmask')
+        elif l == 2:
+            # habe Netmask
+            print('netmask')
+        else:
+            continue
 
-#            octett_ok = int(octett) 
+        print(octetts)
+        
 
+        
 
-#        else:
-#            print(pattern)
-#            print('WEG DAMIT')
-
+#            print(f'Treffer ok: {octetts}')
+#            for octett in octetts:
+#                for zeichen in octett:
+#                    print(zeichen)
+#

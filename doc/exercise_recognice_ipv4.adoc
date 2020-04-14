@@ -74,9 +74,117 @@ Das obige Programm erkennt zuverlässig IPv4 Adressen. Diese Funktionalität ist
 * IPv6 Adresse
 * etwas Müll
 
+ifdef::with_solution[]
 == Lösung 1:
+
+=== Vorbemerkung
+
+In der Realität sind die Dinge häufiger deutlich komplexer als es zunächst den Anschein hat. Bei der Lösung der Aufgabe geht es nicht um eine 100%'tige Lösung, dafür gibt es viel zu viele Sonderfälle zu beachten. In der Praxis würde man zur Lösung dieser Aufgabe auf Bibliotheken zurückgreifen. Je nach Qualität einer Bibliothek sind diese Sonderfälle dann berücksichtigt und der Program Code wäre deutlich einfacher. +
+Die im weiteren vorgestellte Lösung verwendet die bisher gelernten Schlüsselwörter. Auch hier ist zu beachten das die Lösung keineswegs die beste (geschickteste) Lösung darstellt. Python selber hat eine große Vielzahl von Konstukten um Aufgaben sehr effizient zu lösen. Die Anzahl der Lösungsmöglichkeiten ist schier unendlich, es geht hier um eine einfach nachzuvollziehende Lösung. +
+
+Zur Lösung der Aufgabe ist es hilfreich die Aufgabe zunächst in kleinere Aufgaben zu unterteilen. So könnten Sie sich z.B. folgende Liste erstellen um die Aufgabe in kleinere Aufgaben zu zerlegen:
+
+=== Teillösungen
+
+* lese eine CSV Datei zeilenweise ein
+* nehme jede Zeile und extrahiere die erste Spalte
+* untersuche die erste Spalte auf ungültige Zeichen und breche den aktuellen Schleifendurchlauf bei ungültigen Zeichen ab
+* Die erste Spalte muss aus vier Dezimalzahlen bestehen die durch drei Punkte voneinander getrennt sind.
+* Die letzte Zahl kann auch einen _/_ als Trennzeichen zwischen IP und Netzmaske in Kurzschreibweise enthalten
+* Alle Bestandteile können jetzt in Ganze Dezimalzahlen (Integers) umgewandelt werden.
+* Sollte die jeweilige Stelle der IP Adresse nicht im Bereich zwischen 0 bis 255 liegen, kann die Bearbeitung der aktuellen Zeile abgebrochen werden.
+
+Bis hierhin ist der erste große Teil der Aufgabe gelöst. Jetzt kommen wir zur Lösung der gegestellten Aufgaben. Im folgenden wird die Aufgabe 1 gelöst, die Lösung der weiteren Fragen erfolgt analog.
+
+
+[source,python,highlight=4]
+.eine mögliche Lösung des ersten Teils
+-----
+#!/usr/bin/python3
+# -*- coding: utf-8 -*-
+
+file = '/home/tn/bin/network_stuff.csv'
+
+first_line = True
+# Datei einlesen und die erste Zeile ueberspringen
+with open(file, 'r') as fh:
+    for line in fh.readlines():
+        if first_line is True:
+            first_line = False
+            continue
+        # erste Spalte
+        rows = line.split(';')
+        pattern = rows[0]
+        octett = pattern.split('.')
+
+        # Es kann nur dann eine gültige IP sein, wenn es genau vier Oktetts hat
+        lenght = 0
+        for i in octett:
+            lenght = lenght + 1
+        if len != 4:
+            continue
+
+        # haben wir eine Netzmaske in Kurzschreibweise
+        items = octett[3].split('/')
+        if items > 1:
+            netmask = items[1]
+            ipaddress = [octett[0], octett[1], octett[2], items[0]]
+            # naechste Zeile wenn die Netzmaske keine Zahl ist
+            try:
+                int(netmask)
+            except:
+                continue
+        else:
+            netmask = False
+            ipaddress = octett
+
+        # enthalten alle otetts der IPadresse nur Integers
+        try:
+            for octett in ipaddress:
+                int(octett)
+        except:
+            continue
+
+        # liegen die Integers im Bereich zwischen 0 und 255
+        next_line = True
+        for octett in ipaddress:
+            if octett >= 0 and octett < 256:
+                next_line = True
+            else:
+                next_line = False
+                break
+        # Abbruch der aktuellen Zeile
+        if next_line is False:
+            continue
+
+        # jetzt koennen die Fragen nach dem Typ der Adresse beantwortet werden
+
+        # ermitteln der Host Adresse
+        # einfachste Annahme, keine Netzmaske
+        if netmask is False and octett[3] > 0 and octett[3] < 255:
+            print(f'{octett[0]}.{octett[1]}.{octett[2]}.{octett[3]} ist eine Host Adresse')
+        else:
+            pass
+-----
+
+NOTE: Wann immer Programmcode mehrfach verwendet wird, sollte er in ein Funktion ausgelagert werden
+
+Die erste Aufgabe gilt als gelöst, wenn sich keine Netzmaske ermitteln lässt. Dann kann die IP Adresse als Host Adresse betrachtet werden wenn die erste Stelle der IP Adresse kleiner 255 ist.
+
+NOTE: In der Realität ist die Frage natürlich etwas komplexer, aber für unsere Zwecke reicht die Lösung aus.
+
+==== Handelt es sich um eine Host oder um eine Netzadresse
+
+Lösung der Frage ob es sich bei der IP Adresse um eine Netzwerkadresse oder um eine Broadcast Adresse handelt. +
+Dazu muss eine Netzmaske vorhanden sein. Im folgenden wird jetzt berechnet welche Netzwerkadressen und welche Broadcast Adressen möglich sind. Durch einen Vergleich kann dann ermittelt werden ob es sich um:
+
+a. eine Host Adresse handelt
+b. eine Netzwerk Adresse handelt
+c. eine Broadcast Adresse handelt
+
 
 [source,python,highlight=4]
 -----
 print('solution')
 -----
+endif::with_solution[]
