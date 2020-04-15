@@ -17,6 +17,22 @@ def is_something(pattern, liste):
             return False
     return True
 
+# berechnen der Netzwerkadressen und der Broadcasts zu einer Netzmask
+def netzwerke():
+    counter = 0
+    amount_networks = 0
+    ipranges = {}
+    for i in range(24, 31):
+        amount_networks = 2 ** counter
+        counter += 1
+        sprung = int(256 / amount_networks)
+        ipliste = []
+        for i2 in range(0, amount_networks):
+            ipliste.append((i2*sprung, (i2+1)*sprung-1))
+        ipranges[str(i)] = ipliste
+    return ipranges
+
+iprange = netzwerke()
 # Datei einlesen und die erste Zeile ueberspringen
 first_line = True
 with open(file, 'r') as fh:
@@ -76,6 +92,7 @@ with open(file, 'r') as fh:
             break
 
         # Wenn es eine Netzmaske gibt pruefen wir ob sie gueltig ist (2 bis 30)
+        typ = 'host'
         if netmask != '':
             invalid = False
             liste = ['0','1','2','3','4','5','6','7','8','9']
@@ -89,6 +106,20 @@ with open(file, 'r') as fh:
             if invalid is True:
                 break
 
+            # Vergleiche ob die aktuelle IP Adresse eine Netzwerkadresse oder 
+            # Broadcast ist
+            result1 = iprange[str(netmask)]
+            typ = 'host'
+            for network in result1:
+                if str(octetts[3]) == str(network[0]):
+                    typ = 'netzwerk'
+                elif octetts[3] == network[1]:
+                    typ = 'broadcast'
+                else:
+                    typ = 'host'
+
         # Ergebnis
-        print(f'IP: {octetts[0]}.{octetts[1]}.{octetts[2]}.{octetts[3]} -- Netmaske: {netmask}')
+        print(f'IP: {octetts[0]}.{octetts[1]}.{octetts[2]}.{octetts[3]} -- Netmaske: {netmask}, Typ: {typ}')
+
+
 
