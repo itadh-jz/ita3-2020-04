@@ -19,8 +19,9 @@ def datei_einlesen(Datei):
             anzahl = int(anzahl[:-1])
             nahrungsmittel = {'Name': name, 'Preis': preis, 'Gewicht': gewicht, 'Anzahl': anzahl}
             einkaufsliste.append(nahrungsmittel)
+        return einkaufsliste
 
-datei_einlesen('/home/tn/bin/einkaufliste.csv')
+einkaufsliste = datei_einlesen('/home/tn/bin/einkaufliste.csv')
 
 
 geld = input('Wieviel Geld wollen Sie heute ausgeben: ')

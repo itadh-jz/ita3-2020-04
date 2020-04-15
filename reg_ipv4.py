@@ -1,38 +1,12 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
 
+import lib.myfunctions as mf
 
 file = '/home/tn/bin/network_stuff.csv'
 
-# Funktion die prueft ob alle Zeichen der Eingabe in einer gegebenen Liste enthalten sind
-# Die Funktion gibt True odder False zurueck
-def is_something(pattern, liste):
-    for item in pattern:
-        schalter = False
-        for element in liste:
-            if item == element:
-                schalter = True
-                break
-        if schalter is False:
-            return False
-    return True
 
-# berechnen der Netzwerkadressen und der Broadcasts zu einer Netzmask
-def netzwerke():
-    counter = 0
-    amount_networks = 0
-    ipranges = {}
-    for i in range(24, 31):
-        amount_networks = 2 ** counter
-        counter += 1
-        sprung = int(256 / amount_networks)
-        ipliste = []
-        for i2 in range(0, amount_networks):
-            ipliste.append((i2*sprung, (i2+1)*sprung-1))
-        ipranges[str(i)] = ipliste
-    return ipranges
-
-iprange = netzwerke()
+iprange = mf.netzwerke()
 # Datei einlesen und die erste Zeile ueberspringen
 first_line = True
 with open(file, 'r') as fh:
@@ -48,25 +22,25 @@ with open(file, 'r') as fh:
         octetts = pattern.split('.')
 
         # ermittelen der Lange der Liste
-        l = 0
+        length = 0
         for i in octetts:
-            l = l + 1
+            length = length + 1
  
         # es kann nur eine IP Adresse sein wenn es genau vier Oktetts gibt
-        if l != 4:
+        if length != 4:
             continue
 
         # Das letzte Oktett kann eine Netzmaske enthalten
         items = octetts[3].split('/')
-        l = 0
+        length = 0
         for i in items:
-            l = l + 1
+            length = length + 1
 
         # Wenn die Lange des letzten Oktetts 1 ist, haben wir keine Netzmaske
-        if l == 1:
+        if length == 1:
             netmask = ''
         # Wenn die Lange des letzten Oktetts 2 ist, haben wir eine Netzmaske
-        elif l == 2:
+        elif length == 2:
             octetts[3] = items[0]
             netmask = items[1]
         else:
@@ -77,7 +51,7 @@ with open(file, 'r') as fh:
         invalid = False
         liste = ['0','1','2','3','4','5','6','7','8','9']
         for octett in octetts:
-            result = is_something(octett, liste)
+            result = mf.is_something(octett, liste)
             # Wenn die enthaltenen Zeichen nur Zahlen sind pruefen wir ob das Oktett 
             # zwischen 0 und 256 liegt
             if result is not False:
@@ -96,7 +70,7 @@ with open(file, 'r') as fh:
         if netmask != '':
             invalid = False
             liste = ['0','1','2','3','4','5','6','7','8','9']
-            result = is_something(netmask, liste)
+            result = mf.is_something(netmask, liste)
             if result is not False:
                 _netmask = int(netmask)
                 if _netmask >= 2 and _netmask <= 30:
