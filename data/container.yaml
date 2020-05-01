@@ -1,0 +1,20 @@
+version: '2'
+
+services:
+  gitlab:
+    image: 'gitlab/gitlab-ce:latest'
+    container_name: gitlab
+    restart: always
+    hostname: 'gitlab'
+#    environment:
+      #      GITLAB_OMNIBUS_CONFIG: |
+        #        external_url 'https://src.mgeg.de'
+        # Add any other gitlab.rb configuration here, each on its own line
+    ports:
+      - '127.0.0.1:80:80'
+      - '127.0.0.1:443:443'
+      - '127.0.0.1:22:22'
+    volumes:
+      - '/home/tn/work/docker/gitlab/config:/etc/gitlab'
+      - '/home/tn/work/docker/gitlab/logs:/var/log/gitlab'
+      - '/home/tn/work/docker/gitlab/data:/var/opt/gitlab'
